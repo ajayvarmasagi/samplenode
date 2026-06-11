@@ -1,0 +1,22 @@
+name: my new workflow
+on: 
+  push:
+  workflow_dispatch:
+    inputs:
+      log_test:
+        description: to test the workflow
+        type: environment
+        required: true
+        
+      
+
+jobs:
+  my_job:
+    name: my test job
+    runs-on: ubuntu-latest
+    steps:
+      - name: test steps
+        run: echo "test workflow"
+      - name: input validation
+        run: echo "${{ inputs.log_test }}"
+        
