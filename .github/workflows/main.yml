@@ -5,8 +5,9 @@ on:
     inputs:
       log_test:
         description: to test the workflow
-        type: environment
+        type: string
         required: true
+        
         
       
 
