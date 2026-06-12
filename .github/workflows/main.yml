@@ -18,6 +18,8 @@ jobs:
     env:
       my_job_var1: job variable
     runs-on: ubuntu-latest
+    outputs: 
+      my_job_output: ${{ steps.test_step_1.outputs.STEP1_VAR }}
     steps:
       - name: test steps
         id: test_step_1
@@ -27,7 +29,7 @@ jobs:
           echo "test workflow"
           echo "${{ env.My_var_1 }}"
           echo $my_step_var1
-          echo "STEP1_VAR=${{ env.my_step_var1 }}" >> $GITHUB_ENV
+          echo "STEP1_VAR=${{ env.my_step_var1 }}" >> $GITHUB_OUTPUT
       - name: input validation
         run: |
           echo "${{ inputs.log_test }}"
@@ -40,6 +42,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: second job step1
-        run: echo "${{ needs.my_job1.test_step_1.STEP1_VAR }}"
+        run: echo "${{ needs.my_job1.outputs.my_job_output }}"
     
         
