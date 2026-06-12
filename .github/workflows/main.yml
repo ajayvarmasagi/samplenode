@@ -26,7 +26,7 @@ jobs:
           echo "test workflow"
           echo "${{ env.My_var_1 }}"
           echo $my_step_var1
-          echo "{{ env.my_step_var1 }}"
+          echo "${{ env.my_step_var1 }}"
       - name: input validation
         run: |
           echo "${{ inputs.log_test }}"
