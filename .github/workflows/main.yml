@@ -9,12 +9,14 @@ on:
         required: true
         
 env:
-  My_var_1: variable         
+  My_var_1: workflow variable         
       
 
 jobs:
   my_job:
     name: my test job
+    env:
+      my_job_var1: job variable
     runs-on: ubuntu-latest
     steps:
       - name: test steps
@@ -22,5 +24,7 @@ jobs:
           echo "test workflow"
           echo "${{ env.My_var_1 }}"
       - name: input validation
-        run: echo "${{ inputs.log_test }}"
+        run: |
+          echo "${{ inputs.log_test }}"
+          echo "${{ env.my_job_var1 }}"
         
