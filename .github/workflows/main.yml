@@ -8,7 +8,8 @@ on:
         type: string
         required: true
         
-        
+env:
+  My_var_1: variable         
       
 
 jobs:
@@ -17,7 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test steps
-        run: echo "test workflow"
+        run: |
+          echo "test workflow"
+          echo "${{ env.My_var_1 }}"
       - name: input validation
         run: echo "${{ inputs.log_test }}"
         
