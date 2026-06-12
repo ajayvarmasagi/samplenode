@@ -26,9 +26,10 @@ jobs:
           echo "test workflow"
           echo "${{ env.My_var_1 }}"
           echo $my_step_var1
-          echo "${{ env.my_step_var1 }}"
+          echo "STEP1_VAR = ${{ env.my_step_var1 }}" >> $GITHUB_ENV
       - name: input validation
         run: |
           echo "${{ inputs.log_test }}"
           echo "${{ env.my_job_var1 }}"
+          echo "${{ env.STEP1_VAR }}"
         
