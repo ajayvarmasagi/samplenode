@@ -40,6 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: second job step1
-        run: echo "${{ env.my_job1.test_step_1.STEP1_VAR }}"
+        run: echo "${{ needs.my_job1.test_step_1.STEP1_VAR }}"
     
         
