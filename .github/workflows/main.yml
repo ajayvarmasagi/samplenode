@@ -13,7 +13,7 @@ env:
       
 
 jobs:
-  my_job:
+  my_job1:
     name: my test job
     env:
       my_job_var1: job variable
@@ -32,4 +32,13 @@ jobs:
           echo "${{ inputs.log_test }}"
           echo "${{ env.my_job_var1 }}"
           echo "${{ env.STEP1_VAR }}"
+
+  my_job2:
+    needs: my_job1
+    name: test job 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: second job step1
+        run: echo "${{ env.my_job1.STEP1_VAR }}"
+    
         
