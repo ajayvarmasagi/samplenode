@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test steps
+        id: test_step_1
         env:
           my_step_var1: my step variable
         run: |
@@ -39,6 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: second job step1
-        run: echo "${{ env.my_job1.STEP1_VAR }}"
+        run: echo "${{ env.my_job1.test_step_1.STEP1_VAR }}"
     
         
