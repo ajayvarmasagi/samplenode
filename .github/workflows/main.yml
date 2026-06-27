@@ -36,7 +36,7 @@ jobs:
 #          echo "${{ env.my_job_var1 }}"
 #          echo "${{ env.STEP1_VAR }}"
   resuse:
-    uses: ajayvarmasagi/actions-practice/.github/workflows/reusable-workflow.yml
+    uses: ajayvarmasagi/actions-practice/.github/workflows/reusable-workflow.yml@main
     with:
       log_test: "true"
 
