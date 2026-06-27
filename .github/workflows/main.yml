@@ -41,12 +41,13 @@ jobs:
       log_test: "true"
 
 
+
   my_job2:
     needs: resuse
     name: test job 2
     runs-on: ubuntu-latest
     steps:
       - name: second job step1
-        run: echo "test"
+        run: echo "${{ needs.resuse.outputs.reuse_output }}"
     
         
