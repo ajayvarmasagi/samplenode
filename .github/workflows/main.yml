@@ -8,8 +8,8 @@ on:
 #        type: string
 #        required: true
         
-#env:
-#  My_var_1: workflow variable         
+env:
+  My_var_1: workflow variable         
       
 
 jobs:
@@ -49,5 +49,6 @@ jobs:
     steps:
       - name: second job step1
         run: echo "${{ needs.resuse.outputs.reuse_output }}"
-    
-        
+
+      - name: running composite actions
+        uses: ./reusebale-actions
