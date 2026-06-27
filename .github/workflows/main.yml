@@ -42,11 +42,11 @@ jobs:
 
 
   my_job2:
-    needs: my_job1
+    needs: resuse
     name: test job 2
     runs-on: ubuntu-latest
     steps:
       - name: second job step1
-        run: echo "${{ needs.my_job1.outputs.my_job_output }}"
+        run: echo "test"
     
         
