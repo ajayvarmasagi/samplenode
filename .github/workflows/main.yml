@@ -2,39 +2,44 @@ name: my new workflow
 on: 
   push:
   workflow_dispatch:
-    inputs:
-      log_test:
-        description: to test the workflow
-        type: string
-        required: true
+#    inputs:
+#      log_test:
+#        description: to test the workflow
+#        type: string
+#        required: true
         
-env:
-  My_var_1: workflow variable         
+#env:
+#  My_var_1: workflow variable         
       
 
 jobs:
-  my_job1:
-    name: my test job
-    env:
-      my_job_var1: job variable
-    runs-on: ubuntu-latest
-    outputs: 
-      my_job_output: ${{ steps.test_step_1.outputs.STEP1_VAR }}
-    steps:
-      - name: test steps
-        id: test_step_1
-        env:
-          my_step_var1: my step variable
-        run: |
-          echo "test workflow"
-          echo "${{ env.My_var_1 }}"
-          echo $my_step_var1
-          echo "STEP1_VAR=${{ env.my_step_var1 }}" >> $GITHUB_OUTPUT
-      - name: input validation
-        run: |
-          echo "${{ inputs.log_test }}"
-          echo "${{ env.my_job_var1 }}"
-          echo "${{ env.STEP1_VAR }}"
+#  my_job1:
+#    name: my test job
+#    env:
+#      my_job_var1: job variable
+#    runs-on: ubuntu-latest
+#    outputs: 
+#      my_job_output: ${{ steps.test_step_1.outputs.STEP1_VAR }}
+#    steps:
+#      - name: test steps
+#        id: test_step_1
+#        env:
+#          my_step_var1: my step variable
+#        run: |
+#          echo "test workflow"
+#          echo "${{ env.My_var_1 }}"
+#          echo $my_step_var1
+#          echo "STEP1_VAR=${{ env.my_step_var1 }}" >> $GITHUB_OUTPUT
+#      - name: input validation
+#        run: |
+#          echo "${{ inputs.log_test }}"
+#          echo "${{ env.my_job_var1 }}"
+#          echo "${{ env.STEP1_VAR }}"
+  resuse:
+    uses: ajayvarmasagi/actions-practice/.github/workflows/reusable-workflow.yml
+    with:
+      log_test: "true"
+
 
   my_job2:
     needs: my_job1
